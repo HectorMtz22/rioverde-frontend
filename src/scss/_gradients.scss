@@ -1,0 +1,28 @@
+@function get-stops($c-list) {
+    $s-list: ();
+    $n: length($c-list);
+    $u: 100%/$n;
+    
+    @for $i from 1 to $n {
+        $s-list: $s-list, nth($c-list, $i) $i*$u, nth($c-list, $i + 1) 0
+    }
+    @return $s-list;
+}
+
+.strip {    
+    &:nth-child(1) {
+        background: linear-gradient(90deg, get-stops(#5461c8 #c724b1 #e4002b #ff6900 #f6be00 #97d700 #00ab84 #00a3e0))
+    }
+    
+    &:nth-child(2) {
+        background: linear-gradient(get-stops(purple deeppink gold))
+    }
+    
+    &:nth-child(3) {
+        background: linear-gradient(60deg, get-stops(#000 #ff006f #ffb300 #fff538))
+    }
+    
+    &:nth-child(4) {
+        background: linear-gradient(-45deg, get-stops(#4a195b #b52986 #fd648d #faa776 #ead388))
+    }
+}
