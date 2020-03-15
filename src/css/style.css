@@ -4,10 +4,16 @@
   font-family: 'Raleway', sans-serif;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  text-decoration: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
+}
+
+.strip1 {
+  background: -webkit-gradient(linear, left top, right top, color-stop(12.5%, #5461c8), color-stop(0, #c724b1), color-stop(25%, #c724b1), color-stop(0, #e4002b), color-stop(37.5%, #e4002b), color-stop(0, #ff6900), color-stop(50%, #ff6900), color-stop(0, #f6be00), color-stop(62.5%, #f6be00), color-stop(0, #97d700), color-stop(75%, #97d700), color-stop(0, #00ab84), color-stop(87.5%, #00ab84), color-stop(0, #00a3e0));
+  background: linear-gradient(90deg, #5461c8 12.5%, #c724b1 0, #c724b1 25%, #e4002b 0, #e4002b 37.5%, #ff6900 0, #ff6900 50%, #f6be00 0, #f6be00 62.5%, #97d700 0, #97d700 75%, #00ab84 0, #00ab84 87.5%, #00a3e0 0);
 }
 
 .strip:nth-child(1) {
@@ -33,8 +39,24 @@ header {
   color: #fff;
 }
 
+.isotipo {
+  display: inline-block;
+  color: #fff;
+}
+
+header main {
+  float: right;
+  margin-top: 8px;
+}
+
+header main span {
+  color: #fff;
+  font-size: 1.5em;
+  margin: 0px 10px;
+}
+
 form {
-  width: 60%;
+  width: 40%;
   padding: 20px;
   margin: 20px auto;
   -webkit-box-shadow: 0px 0px 20px #ddd;
@@ -52,13 +74,68 @@ input {
 
 button {
   width: 100%;
+  color: #fff;
   font-size: 1.2em;
   padding: 2px;
-  border: 2px solid #ccc;
+  border: 2px solid #999;
   border-radius: 5px;
 }
 
 button:hover {
   border: 2px solid black;
+}
+
+.nav {
+  width: 50%;
+  margin: 10px auto;
+}
+
+.button {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  padding: 2px 5%;
+}
+
+.table {
+  width: 50vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.table:nth-child(1) {
+  margin-top: 10px;
+}
+
+.table section {
+  background: #000;
+  color: #fff;
+  padding: 5px;
+}
+
+.conticon {
+  position: absolute;
+  right: -50px;
+}
+
+.conticon img {
+  width: 20px;
+  cursor: pointer;
+  margin: 0 2px;
 }
 /*# sourceMappingURL=style.css.map */

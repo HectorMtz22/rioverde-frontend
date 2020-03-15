@@ -1,10 +1,24 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
     render() {
         return (
-            <header className="strip">
-                <h1>Abarrotes "Rio Verde"</h1>
+            <header className="strip1">
+                <Link to="/">
+                    <h1 className="isotipo">Abarrotes "Rio Verde"</h1>
+                </Link>
+                <main>
+                    <Link to="/sales">
+                        <span>Ventas</span>
+                    </Link>
+                    <Link to="/products">
+                        <span>Productos</span>
+                    </Link>
+                    <Link to="/vendors">
+                        <span>Proveedores</span>
+                    </Link>
+                </main>
             </header>
         )
     }

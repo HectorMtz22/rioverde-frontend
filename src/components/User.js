@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import Axios from 'axios';
 
 const api = process.env.REACT_APP_API_URL;
 const apiLoginUser = api + '/users/login';
@@ -21,16 +21,17 @@ export default class User extends Component {
             pass: this.state.pass
         };
         console.log(loginUser);
-        await axios.post(apiLoginUser, loginUser);
+        await Axios.post(apiLoginUser, loginUser);
+        window.location = "/sales";
     }
     render() {
         return (
             <div>
                 <form onSubmit={this.onSubmit}>
                 <h3>Ingresa tus credenciales</h3>
-                <input type="number" onChange={this.onInputChange} name="numberUser" placeholder="Ingresa el número de usuario" autoFocus/>
-                <input type="number" onChange={this.onInputChange} name="pass" placeholder="Ingresa la contraseña"/>
-                <button type="submit" className="strip">
+                <input type="number" onChange={this.onInputChange} name="numberUser" placeholder="Ingresa el número de usuario" required autoFocus/>
+                <input type="number" onChange={this.onInputChange} name="pass" placeholder="Ingresa la contraseña" required/>
+                <button type="submit" className="strip1">
                     Siguiente
                 </button>
             </form>
