@@ -3,36 +3,30 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const api = process.env.REACT_APP_API_URL;
-const apiProducts = api + '/products';
+const apiProducts = api + '/';
+
+const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+}
 
 export default class Products extends Component {
     state = {
-        table: [
-            {
-            _id: '1',
-            name: 'Cheetos',
-            brand: 'Sabritas',
-            price: '1',
-            total: '5'
-            },
-            {
-            _id: '2',
-            name: 'Pinguinos',
-            brand: 'Marinela',
-            price: '2',
-            total: '10'
-            }
-        ],
+        table: [],
     }
 
     async componentDidMount() {
-        const res = await Axios.get(apiProducts);
-        this.setState({table: res.data});
+        //const res = await Axios.get(apiProducts);
+        //this.setState({table: res.data});
+        this.getNotes();
     }
 
     async getNotes() {
-        const res = await Axios.get(apiProducts);
-        this.setState({table: res.data});
+        const res = await Axios.get(apiProducts, {
+            headers: headers
+        });
+        //console.log(res.data.items);
+        this.setState({table: res.data.items});
     }
 
     deleteProduct = async (id) => {
@@ -55,7 +49,7 @@ export default class Products extends Component {
                 </main>
                 {
                     this.state.table.map((product) => (
-                        <main className="table" >
+                        <main className="table" key={product._id}>
                             <section>{product._id}</section>
                             <section>{product.name}</section>
                             <section>{product.brand}</section>
