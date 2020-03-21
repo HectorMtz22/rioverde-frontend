@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Products from './components/Products';
 import './css/style.css';
 import CreateProduct from './components/CreateProduct';
+import Vendors from './components/Vendors';
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path="/products" component={Products} />
           <Route path="/create/product" component={CreateProduct} />
           <Route path="/edit/:id" component={CreateProduct} />
-          <Route path="/vendors" component={User} />
+          <Route path="/vendors" component={Vendors} />
           </Switch>
         <Footer />
       </Router>

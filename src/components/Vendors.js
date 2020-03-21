@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const api = process.env.REACT_APP_API_URL;
-const apiProducts = api + '/products/apiproductos.php';
+const apiVendors = api + '/vendors/apiproveedores.php';
 
 const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
 }
 
-export default class Products extends Component {
+export default class Vendors extends Component {
     state = {
         table: [],
     }
 
     async componentDidMount() {
-        //const res = await axios.get(apiProducts);
+        //const res = await axios.get(apiVendors);
         //this.setState({table: res.data});
-        this.getProducts();
+        this.getVendors();
     }
 
-    async getProducts() {
-        const res = await axios.get(apiProducts, {
+    async getVendors() {
+        const res = await axios.get(apiVendors, {
             headers: headers
         });
         //console.log(res.data.mensaje);
@@ -34,39 +34,35 @@ export default class Products extends Component {
         }
     }
 
-    deleteProduct = async (id) => {
-        const check = window.confirm('Quieres eliminar el producto');
+    deleteVendor = async (id) => {
+        const check = window.confirm('Quieres eliminar el Vendedor');
         if (check) {
-            await axios.delete(apiProducts + "/" + id);
-            this.getProducts();
+            await axios.delete(apiVendors + "/" + id);
+            this.getVendors();
         }
     }
 
     render() {
         return (
             <div>
-                <main className="table-5">
+                <main className="table-3">
                     <section>Código</section>
                     <section>Nombre</section>
-                    <section>Marca</section>
-                    <section>Precio</section>
-                    <section>Total</section>
+                    <section>Frecuencias</section>
                 </main>
                 {
-                    this.state.table.map((product) => (
-                        <main className="table-5" key={product._id}>
-                            <section>{product._id}</section>
-                            <section>{product.name}</section>
-                            <section>{product.brand}</section>
-                            <section>{product.price}</section>
-                            <section>{product.total}</section>
+                    this.state.table.map((vendor) => (
+                        <main className="table-3" key={vendor._id}>
+                            <section>{vendor._id}</section>
+                            <section>{vendor.name}</section>
+                            <section>{vendor.frecuencies}</section>
                             <main className="conticon-left">
-                                <Link to={"/edit/" + product._id}>
+                                <Link to={"/edit/" + vendor._id}>
                                     <img src="/img/edit-button.png" alt="Edit" className="icon"/>
                                 </Link>
                             </main>
                             <main className="conticon-right">
-                                <img src="/img/check.png" alt="Check" className="icon check" onClick={() => this.deleteProduct(product._id)}/>
+                                <img src="/img/check.png" alt="Check" className="icon check" onClick={() => this.deleteVendor(vendor._id)}/>
                             </main>
                         </main>
                     ))
@@ -74,7 +70,7 @@ export default class Products extends Component {
                 <main className="nav">
                     <Link to="/create/product">
                         <button className="button">
-                            <span>Agregar Producto</span>
+                            <span>Agregar Vendedor</span>
                         </button>
                     </Link>
                 </main>

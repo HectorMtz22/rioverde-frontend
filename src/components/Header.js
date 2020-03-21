@@ -8,7 +8,7 @@ export default class Header extends Component {
                 <Link to="/">
                     <h1 className="isotipo">Abarrotes "Rio Verde"</h1>
                 </Link>
-                <main>
+                <main className="mobile-header">
                     <Link to="/sales">
                         <span>Ventas</span>
                     </Link>

@@ -9,6 +9,13 @@
     @return $s-list;
 }
 
+
+
+.strip1 {
+    background: linear-gradient(90deg, get-stops(#2A98BD #2CC7C4 #30B089 #2CC76C #2ABD3D))
+}
+
+/*
 .strip1 {
     background: linear-gradient(90deg, get-stops(#5461c8 #c724b1 #e4002b #ff6900 #f6be00 #97d700 #00ab84 #00a3e0))
 }
@@ -30,3 +37,4 @@
         background: linear-gradient(-45deg, get-stops(#4a195b #b52986 #fd648d #faa776 #ead388))
     }
 }
+*/
