@@ -81,9 +81,8 @@ button {
 
 .button {
     width: 100%;
-    background: #000;
     color: #fff;
-    border: 2px solid #000;
+    border: 1px solid rgb(0, 0, 0);
     cursor: pointer;
 }
 
@@ -107,7 +106,6 @@ footer > p {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin: auto;
     text-align: center;
-    border-radius: 0px 0px 7px 7px;
     position: relative;
     &::before {
         content: "";
@@ -134,6 +132,9 @@ footer > p {
         }
         margin: 10px auto 1px;
         border-radius: 7px 7px 0px 0px;
+    }
+    &:nth-last-child(2) {
+        border-radius: 0px 0px 7px 7px;
     }
 }
 .table-5 section {
@@ -150,7 +151,6 @@ footer > p {
     grid-template-columns: 1fr 1fr 1fr;
     margin: auto;
     text-align: center;
-    border-radius: 0px 0px 7px 7px;
     position: relative;
     &::before {
         content: "";
@@ -160,7 +160,7 @@ footer > p {
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(90deg, get-stops(#2484A3 #26ADAB #299676 #26AD5F #24A335));
+        background: linear-gradient(90deg, get-stops(#2484A3 #299676 #24A335));
         z-index: -1;
         filter: blur(3px);
     }
@@ -173,10 +173,13 @@ footer > p {
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, get-stops(#2484A3 #26ADAB #299676 #26AD5F #24A335));
+            background: linear-gradient(90deg, get-stops(#2484A3 #299676 #24A335));
         }
         margin: 10px auto 1px;
         border-radius: 7px 7px 0px 0px;
+    }
+    &:nth-last-child(2) {
+        border-radius: 0px 0px 7px 7px;
     }
 }
 .table-3 section {
@@ -203,9 +206,20 @@ footer > p {
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
+    padding: 5px 0px;
 }
 .mobile-footer p {
     color: #fff;
+}
+
+
+.sales {
+    width: 80%;
+    min-width: 100px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.644);
 }
 
 @media screen and (max-width: 820px) {
@@ -215,8 +229,8 @@ footer > p {
     .mobile-header {
         display: none;
     }
-    .table {
-        font-size: 0.8em;
+    .table-5, .table-3 {
+        font-size: 0.7em;
         margin-left: auto;
     }
     .strip1 {

@@ -37,7 +37,14 @@ export default class Vendors extends Component {
     deleteVendor = async (id) => {
         const check = window.confirm('Quieres eliminar el Vendedor');
         if (check) {
-            await axios.delete(apiVendors + "/" + id);
+            const delVen = {
+                "method" : "DELETE",
+                "_id" : id
+            } 
+            //await axios.delete(apiVendors + "/" + delVen);
+            await axios.post(apiVendors, delVen, {
+                headers: headers
+            });
             this.getVendors();
         }
     }
@@ -57,7 +64,7 @@ export default class Vendors extends Component {
                             <section>{vendor.name}</section>
                             <section>{vendor.frecuencies}</section>
                             <main className="conticon-left">
-                                <Link to={"/edit/" + vendor._id}>
+                                <Link to={"/vendor/edit/" + vendor._id}>
                                     <img src="/img/edit-button.png" alt="Edit" className="icon"/>
                                 </Link>
                             </main>
@@ -68,8 +75,8 @@ export default class Vendors extends Component {
                     ))
                 }
                 <main className="nav">
-                    <Link to="/create/product">
-                        <button className="button">
+                    <Link to="/create/vendor">
+                        <button className="button strip1">
                             <span>Agregar Vendedor</span>
                         </button>
                     </Link>

@@ -25,7 +25,6 @@ export default class Products extends Component {
         const res = await axios.get(apiProducts, {
             headers: headers
         });
-        //console.log(res.data.mensaje);
         if(res.data.items) {
             this.setState({table: res.data.items});
         }
@@ -37,7 +36,14 @@ export default class Products extends Component {
     deleteProduct = async (id) => {
         const check = window.confirm('Quieres eliminar el producto');
         if (check) {
-            await axios.delete(apiProducts + "/" + id);
+            const delPro = {
+                "method" : "DELETE",
+                "_id" : id
+            } 
+            //await axios.delete(apiProducts + "/" + delPro);
+            await axios.post(apiProducts, delPro, {
+                headers: headers
+            });
             this.getProducts();
         }
     }
@@ -61,7 +67,7 @@ export default class Products extends Component {
                             <section>{product.price}</section>
                             <section>{product.total}</section>
                             <main className="conticon-left">
-                                <Link to={"/edit/" + product._id}>
+                                <Link to={"/product/edit/" + product._id}>
                                     <img src="/img/edit-button.png" alt="Edit" className="icon"/>
                                 </Link>
                             </main>
@@ -73,7 +79,7 @@ export default class Products extends Component {
                 }
                 <main className="nav">
                     <Link to="/create/product">
-                        <button className="button">
+                        <button className="button strip1">
                             <span>Agregar Producto</span>
                         </button>
                     </Link>

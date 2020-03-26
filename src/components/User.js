@@ -9,6 +9,10 @@ export default class User extends Component {
         numberUser : '',
         pass : ''
     }
+    componentDidMount() {
+        const date = new Date();
+        console.log(date.getTime());
+    }
     onInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value
