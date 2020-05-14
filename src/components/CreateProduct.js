@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const api = process.env.REACT_APP_API_URL;
 const apiProduct = api + '/products/apiproductos.php';
+const apiVendors = api + '/vendors/apiproveedores.php';
 
 //const apiProductUpdate = api + '/products/apiproductos.php/?_id=';
 
@@ -15,13 +16,16 @@ export default class CreateProduct extends Component {
     state = {
         _id: '',
         name: '',
-        brand: '',
+        brand: [],
+        table: [],
+        buy: '',
         price: '',
         total: '',
         editing: false
     }
 
     async componentDidMount() {
+        this.getVendors();
         if(this.props.match.params) {
             const envio = {
                 "method" : "GET",
@@ -34,6 +38,7 @@ export default class CreateProduct extends Component {
                 _id: this.props.match.params.id,
                 name: res.data.name,
                 brand: res.data.brand,
+                buy: res.data.buy,
                 price: res.data.price,
                 total: res.data.total
             });
@@ -43,6 +48,22 @@ export default class CreateProduct extends Component {
                 });
                 //console.log("ESTO ES EDITAR");
             }
+        }
+        
+    }
+
+    async getVendors() {
+        const res = await axios.get(apiVendors, {
+            headers: headers
+        });
+        //console.log(res.data.mensaje);
+        if(res.data.items) {
+            this.setState({table: res.data.items});
+            this.setState({nameVendor: this.state.table})
+        }
+        if(res.data.mensaje) {
+            alert("Para iniciar, registra una marca");
+            window.location = "/vendors";
         }
     }
 
@@ -60,6 +81,7 @@ export default class CreateProduct extends Component {
                 _id: this.state._id,
                 name: this.state.name,
                 brand: this.state.brand,
+                buy: this.state.buy,
                 price: this.state.price,
                 total: this.state.total
             };
@@ -74,6 +96,7 @@ export default class CreateProduct extends Component {
                 _id: this.state._id,
                 name: this.state.name,
                 brand: this.state.brand,
+                buy: this.state.buy,
                 price: this.state.price,
                 total: this.state.total
             };
@@ -89,13 +112,52 @@ export default class CreateProduct extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} className="form">
                     <h3>Producto</h3>
-                    <input type="number" onChange={this.onInputChange} name="_id" placeholder="Código" value={this.state._id} required autoFocus/>
-                    <input type="text" onChange={this.onInputChange} name="name" placeholder="Nombre" value={this.state.name} required/>
-                    <input type="text" onChange={this.onInputChange} name="brand" placeholder="Marca" value={this.state.brand} required/>
-                    <input type="number" onChange={this.onInputChange} name="price" placeholder="Precio" value={this.state.price} required/>
-                    <input type="number" onChange={this.onInputChange} name="total" placeholder="Total" value={this.state.total} required/>
+                    <main>
+                        <input type="number" onChange={this.onInputChange} name="_id" value={this.state._id} required autoFocus/>
+                        <label htmlFor="_id" className="label-name">
+                            <span className="content-name">Código</span>
+                        </label>
+                    </main>
+                    <main>
+                        <input type="text" onChange={this.onInputChange} name="name" value={this.state.name} required/>
+                        <label htmlFor="name" className="label-name">
+                            <span className="content-name">Nombre</span>
+                        </label>
+                    </main>
+                    <main>
+                        <select className="text" name="brand" onChange={this.onInputChange} value={this.state.brand} required>
+                            <option>(Selecciona una marca)</option>
+                            {
+                                this.state.table.map(vendor =>
+                                    <option key={vendor.name} value={vendor.name}>
+                                        {vendor.name}
+                                    </option>)
+                            }
+                        </select>
+                        <label htmlFor="title" className="label-name:valid">
+                            <span className="content-name:valid">Materia</span>
+                        </label>
+                    </main>
+                    <main>
+                        <input type="number" onChange={this.onInputChange} name="buy" value={this.state.buy} required/>
+                        <label htmlFor="buy" className="label-name">
+                            <span className="content-name">Compra</span>
+                        </label>
+                    </main>
+                    <main>
+                        <input type="number" onChange={this.onInputChange} name="price" value={this.state.price} required/>
+                        <label htmlFor="price" className="label-name">
+                            <span className="content-name">Venta</span>
+                        </label>
+                    </main>
+                    <main>
+                        <input type="number" onChange={this.onInputChange} name="total" value={this.state.total} required/>
+                        <label htmlFor="total" className="label-name">
+                            <span className="content-name">Stock</span>
+                        </label>
+                    </main>
                     <button type="submit" className="strip1" onSubmit={this.onSubmit}>
                         Guardar
                     </button>

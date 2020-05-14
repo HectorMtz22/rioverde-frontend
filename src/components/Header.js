@@ -3,12 +3,21 @@ import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
     render() {
+        let mobileHeader = 'mobile-header';
+        if (!localStorage.getItem('auth')) {
+            mobileHeader += ' invisible';
+        }
         return (
             <header className="strip1">
-                <Link to="/">
-                    <h1 className="isotipo">Abarrotes "Rio Verde"</h1>
-                </Link>
-                <main className="mobile-header">
+                <section>
+                    <Link to="/">
+                        <h2 className="isotipo">"Rio Verde"</h2>
+                    </Link>
+                </section>
+                <main className={mobileHeader}>
+                    <Link to="/output">
+                        <span>Salidas</span>
+                    </Link>
                     <Link to="/sales">
                         <span>Ventas</span>
                     </Link>

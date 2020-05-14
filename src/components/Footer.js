@@ -3,10 +3,17 @@ import { Link }from 'react-router-dom';
 
 export default class Footer extends Component {
     render() {
+        let footer = 'strip1';
+        let mobileFooter = 'mobile-footer';
+        if (!localStorage.getItem('auth')) {
+            mobileFooter += ' invisible';
+        } else {
+            footer += ' invisible';
+        }
         return (
-            <footer className="strip1">
+            <footer className={footer}>
                 <p>&copy; Copyright 2020</p>
-                <main className="mobile-footer">
+                <main className={mobileFooter}>
                     <Link to="/sales">
                         <p>Ventas</p>
                     </Link>

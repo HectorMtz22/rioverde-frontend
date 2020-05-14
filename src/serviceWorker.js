@@ -54,6 +54,19 @@ export function register(config) {
   }
 }
 
+function showNotification() {
+  Notification.requestPermission(function(result) {
+    if (result === 'granted') {
+      navigator.serviceWorker.ready.then(function(registration) {
+        registration.showNotification('Actualización', {
+          body: 'Reinicia la app para confirmar',
+          icon: '/logo256.png'
+        });
+      });
+    }
+  });
+}
+
 function registerValidSW(swUrl, config) {
   navigator.serviceWorker
     .register(swUrl)
@@ -73,7 +86,7 @@ function registerValidSW(swUrl, config) {
                 'New content is available and will be used when all ' +
                   'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
               );
-
+              showNotification();
               // Execute callback
               if (config && config.onUpdate) {
                 config.onUpdate(registration);

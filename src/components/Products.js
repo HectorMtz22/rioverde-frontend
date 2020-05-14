@@ -55,8 +55,8 @@ export default class Products extends Component {
                     <section>Código</section>
                     <section>Nombre</section>
                     <section>Marca</section>
-                    <section>Precio</section>
-                    <section>Total</section>
+                    <section>Compra</section>
+                    <section>Venta</section>
                 </main>
                 {
                     this.state.table.map((product) => (
@@ -64,8 +64,8 @@ export default class Products extends Component {
                             <section>{product._id}</section>
                             <section>{product.name}</section>
                             <section>{product.brand}</section>
+                            <section>{product.buy}</section>
                             <section>{product.price}</section>
-                            <section>{product.total}</section>
                             <main className="conticon-left">
                                 <Link to={"/product/edit/" + product._id}>
                                     <img src="/img/edit-button.png" alt="Edit" className="icon"/>
@@ -81,6 +81,13 @@ export default class Products extends Component {
                     <Link to="/create/product">
                         <button className="button strip1">
                             <span>Agregar Producto</span>
+                        </button>
+                    </Link>
+                </main>
+                <main className="nav">
+                    <Link to="/product/stock">
+                        <button className="button strip1">
+                            <span>Agregar Stock</span>
                         </button>
                     </Link>
                 </main>

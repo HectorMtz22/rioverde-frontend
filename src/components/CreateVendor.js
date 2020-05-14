@@ -79,11 +79,26 @@ export default class CreateVendor extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} className="form">
                     <h3>Proveedor</h3>
-                    <input type="number" onChange={this.onInputChange} name="_id" placeholder="ID" value={this.state._id} required autoFocus/>
-                    <input type="text" onChange={this.onInputChange} name="name" placeholder="Nombre" value={this.state.name} required/>
-                    <input type="text" onChange={this.onInputChange} name="frecuencies" placeholder="Frecuencias" value={this.state.frecuencies} required/>
+                    <main>
+                        <input type="number" onChange={this.onInputChange} name="_id" value={this.state._id} required autoFocus/>
+                        <label htmlFor="_id" className="label-name">
+                            <span className="content-name">Id</span>
+                        </label>
+                    </main>
+                    <main>
+                        <input type="text" onChange={this.onInputChange} name="name" value={this.state.name} required/>
+                        <label htmlFor="name" className="label-name">
+                            <span className="content-name">Nombre</span>
+                        </label>
+                    </main>
+                    <main>
+                        <input type="text" onChange={this.onInputChange} name="frecuencies" value={this.state.frecuencies} required/>
+                        <label htmlFor="frecuencies" className="label-name">
+                            <span className="content-name">Frecuencias</span>
+                        </label>
+                    </main>
                     <button type="submit" className="strip1" onSubmit={this.onSubmit}>
                         Guardar
                     </button>
