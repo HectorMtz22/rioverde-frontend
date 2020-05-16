@@ -1,0 +1,15 @@
+.dates {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+// .react-datepicker__input-container  Sirve para cambiar la caja del datepicker
+.datepicker{
+    width: 300px;
+    margin: 5px 0px;
+    padding: 5px 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}

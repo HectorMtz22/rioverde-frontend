@@ -1,0 +1,26 @@
+@media screen and (max-width: 820px) {
+    header {
+        font-size: 0.8em;
+    }
+    .mobile-header {
+        display: none;
+    }
+    .table-5, 
+    .table-3, 
+    .sales .table-5 {
+        font-size: 0.7em;
+        margin-left: auto;
+    }
+    .strip1 {
+        background: linear-gradient(-45deg, get-stops(#2A98BD  #30B089  #2ABD3D))
+    }
+    .invisible > p {
+        display: none;
+    }
+    footer .invisible {
+        display: none;
+    }
+    .mobile-footer {
+        display: grid;
+    }
+}

@@ -10,6 +10,7 @@ import Sales from './components/Sales';
 import CreateVendor from './components/CreateVendor';
 import PageNotFound from './components/PageNotFound';
 import Stock from './components/Stock';
+import Output from './components/Output';
 import './css/style.css';
 
 class ProtectedRoute extends Component {
@@ -46,6 +47,7 @@ function App() {
           <ProtectedRoute path="/create/vendor" component={CreateVendor} />
           <ProtectedRoute path="/vendor/edit/:id" component={CreateVendor} />
           <ProtectedRoute path="/vendors" component={Vendors} />
+          <ProtectedRoute path="/output" component={Output} />
           <Route component={PageNotFound} />
           </Switch>
         <Footer />

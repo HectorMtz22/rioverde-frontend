@@ -22,6 +22,9 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
 }
+.title {
+    margin: 0px 20%;
+}
 @import 'gradients';
 body {
     background:
@@ -66,98 +69,8 @@ header .invisible {
     display: none;
 }
 
-form {
-    width: 90vw;
-    min-width: 300px;
-    max-width: 500px;
-    background: #fff;
-    padding: 20px;
-    margin: 20px auto;
-    box-shadow: 0px 0px 20px #ddd;
-}
-
-.form {
-    position: relative;
-    overflow: hidden;
-}
-.form main {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-.form input,
-.form select {
-    width: 100%;
-    height: 50px;
-    font-size: 1.2em;
-    padding: 20px 2px 0px;
-    color: #595f6e;
-    border: none;
-    outline: 0;
-}
-.form select {
-	background: #fff;
-}
-.form label {
-    position: absolute;
-    bottom: 0px;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    border-bottom: 1px solid #000;
-}
-.form label::after {
-    content: "";
-    position: absolute;
-    left: 0px;
-    bottom: -1px;
-    width: 100%;
-    height: 100%;
-    border-bottom: 3px solid #5fa8d3;
-    transform: translateX(-100%);
-    transition: all 300ms ease;
-}
-
-.content-name {
-    position: absolute;
-    bottom: 5px;
-    left: 0px;
-    transition: all 300ms ease;
-}
-
-.form input:focus + .label-name .content-name,
-.form input:valid + .label-name .content-name {
-    transform: translateY(-100%);
-    font-size: 14px;
-}
-.form input:focus + .label-name .content-name {
-    color: #5fa8d3;
-}
-.form input:focus + .label-name::after {
-    transform: translateX(0%);
-}
-
-
-button, .button {
-    width: 100%;
-    color: #fff;
-    font-size: 1.2em;
-    margin-top: 1px;
-    padding: 2px;
-    border: 1px solid #999;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-    transition: all 500ms ease;
-    &:hover {
-        border: 1px solid rgb(108, 21, 190);
-        filter: grayscale(1);
-    }
-    &:focus {
-        border: 1px solid rgb(190, 21, 21);
-    }
-}
+@import "forms";
+@import "tables";
 
 .nav {
     width: 85%;
@@ -176,97 +89,6 @@ footer {
 }
 footer > p {
     padding: 5px 5%;
-}
-
-%table {
-    width: 85%;
-    min-width: 150px;
-    max-width: 800px;
-    display: grid;
-    margin: auto;
-    text-align: center;
-    position: relative;
-    transition: all 500ms ease;
-    &:hover {
-        filter: grayscale(0.5);
-    }
-    &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-radius: 10px;
-        z-index: -1;
-        filter: blur(1px);
-    }
-    &:nth-child(1) {
-        &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            right: 0;
-            height: 1px;
-        }
-        margin: 10px auto 1px;
-        border-radius: 7px 7px 0px 0px;
-    }
-    & section {
-        color: #fff;
-        padding: 5px;
-    }
-}
-
-.table-5 {
-    background: linear-gradient(90deg, get-stops(var(--c1) var(--c2) var(--c3) var(--c4) var(--c5)));
-    @extend %table;
-    grid-template-columns: repeat(5, 1fr);
-    &::before {
-        background: linear-gradient(90deg, get-stops(var(--c1-dark) var(--c2-dark) var(--c3-dark) var(--c4-dark) var(--c5-dark)));
-    }
-    &:nth-child(1) {
-        &::after {
-            background: linear-gradient(90deg, get-stops(var(--c1-dark) var(--c2-dark) var(--c3-dark) var(--c4-dark) var(--c5-dark)));
-        }
-    }
-    &:nth-last-child(3) {
-        border-radius: 0px 0px 7px 7px;
-    }
-}
-
-.table-3 {
-    background: linear-gradient(90deg, get-stops(var(--c1) var(--c3) var(--c5)));
-    @extend %table;
-    grid-template-columns: repeat(3, 1fr);
-    &::before {
-        background: linear-gradient(90deg, get-stops(var(--c1-dark) var(--c3-dark) var(--c5-dark)));
-    }
-    &:nth-child(1) {
-        &::after {
-            background: linear-gradient(90deg, get-stops(var(--c1-dark) var(--c3-dark) var(--c5-dark)));
-        }
-    }
-    &:nth-last-child(2) {
-        border-radius: 0px 0px 7px 7px;
-    }
-}
-
-.conticon-left {
-    position: absolute;
-    left: -25px;
-}
-.conticon-right {
-    position: absolute;
-    right: -25px;
-}
-.conticon-left img, .conticon-right img {
-    width: 20px;
-    cursor: pointer;
-    margin: 0 2px;
 }
 
 .mobile-footer {
@@ -289,23 +111,6 @@ footer > p {
     padding: 10px;
     border-radius: 7px;
     background: rgba(255, 255, 255, 0.644);
-}
-.sales .table-5 {
-    width: 100%;
-    &:nth-last-child(2) {
-        border-radius: 0px 0px 0px 7px;
-    }
-    &:nth-last-child(3) {
-        border-radius: 0px;
-    }
-    &:nth-child(2) {
-        &::after {
-            @extend %table:nth-child(1)::after;
-            background: linear-gradient(90deg, get-stops(var(--c1-dark) var(--c2-dark) var(--c3-dark) var(--c4-dark) var(--c5-dark)));
-        }
-        margin: 10px auto 1px;
-        border-radius: 7px 7px 0px 0px;
-    }
 }
 
 .sales-cantidad {
@@ -395,29 +200,6 @@ footer > p {
     bottom: 25px;
 }
 
-@media screen and (max-width: 820px) {
-    header {
-        font-size: 0.8em;
-    }
-    .mobile-header {
-        display: none;
-    }
-    .table-5, 
-    .table-3, 
-    .sales .table-5 {
-        font-size: 0.7em;
-        margin-left: auto;
-    }
-    .strip1 {
-        background: linear-gradient(-45deg, get-stops(#2A98BD  #30B089  #2ABD3D))
-    }
-    .invisible > p {
-        display: none;
-    }
-    footer .invisible {
-        display: none;
-    }
-    .mobile-footer {
-        display: grid;
-    }
-}
+@import "dates";
+
+@import "mobile";

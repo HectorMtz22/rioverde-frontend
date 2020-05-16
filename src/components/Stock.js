@@ -55,6 +55,7 @@ export default class Stock extends Component {
     render() {
         return (
             <div>
+                <h1 className="title">Stock</h1>
                 <main className="table-3">
                     <section>Código</section>
                     <section>Nombre</section>
