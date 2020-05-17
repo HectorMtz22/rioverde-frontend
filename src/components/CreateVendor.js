@@ -15,10 +15,12 @@ export default class CreateVendor extends Component {
     state = {
         _id: '',
         name: '',
+        vendors: [],
         frecuencies: '',
         editing: false
     }
     async componentDidMount() {
+        await this.getVendors();
         if(this.props.match.params) {
             const envio = {
                 "method" : "GET",
@@ -41,6 +43,19 @@ export default class CreateVendor extends Component {
         }
     }
 
+    async getVendors() {
+        const res = await axios.get(apiVendors, {
+            headers: headers
+        });
+        //console.log(res.data.mensaje);
+        if(res.data.items) {
+            this.setState({vendors: res.data.items});
+        }
+        if(res.data.mensaje) {
+            alert(res.data.mensaje);
+        }
+    }
+
     onInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -49,6 +64,13 @@ export default class CreateVendor extends Component {
 
     onSubmit = async (e) => {
         e.preventDefault();
+        const vendors = this.state.vendors;
+        for(let i = 0; i < vendors.length; i++) {
+            if(vendors[i]._id === this.state._id) {
+                alert("Código ya existente");
+                return 0;
+            }
+        }
         if (this.state.editing) {
             const updateVendor = {
                 method: "PUT",

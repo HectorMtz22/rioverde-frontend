@@ -260,7 +260,7 @@ button:focus, .button:focus {
   border-radius: 7px 7px 0px 0px;
 }
 
-.table-5:nth-child(2)::after, .table-3:nth-child(2)::after, .sales .table-5:nth-child(2)::after {
+.table-5:nth-child(2)::after, .table-3:nth-child(2)::after, .sales .table-5:nth-child(2)::after, .output .table-5:nth-child(2)::after, .output .table-5:nth-child(3)::after {
   content: "";
   display: block;
   position: absolute;
@@ -333,24 +333,38 @@ button:focus, .button:focus {
   margin: 0 2px;
 }
 
-.sales .table-5 {
+.sales .table-5, .output .table-5 {
   width: 100%;
 }
 
-.sales .table-5:nth-last-child(2) {
+.sales .table-5:nth-last-child(2), .output .table-5:nth-last-child(2) {
   border-radius: 0px 0px 0px 7px;
 }
 
-.sales .table-5:nth-last-child(3) {
+.sales .table-5:nth-last-child(3), .output .table-5:nth-last-child(3) {
   border-radius: 0px;
 }
 
-.sales .table-5:nth-child(2) {
+.sales .table-5:nth-child(2), .output .table-5:nth-child(2) {
   margin: 10px auto 1px;
   border-radius: 7px 7px 0px 0px;
 }
 
-.sales .table-5:nth-child(2)::after {
+.sales .table-5:nth-child(2)::after, .output .table-5:nth-child(2)::after {
+  background: -webkit-gradient(linear, left top, right top, color-stop(20%, var(--c1-dark)), color-stop(0, var(--c2-dark)), color-stop(40%, var(--c2-dark)), color-stop(0, var(--c3-dark)), color-stop(60%, var(--c3-dark)), color-stop(0, var(--c4-dark)), color-stop(80%, var(--c4-dark)), color-stop(0, var(--c5-dark)));
+  background: linear-gradient(90deg, var(--c1-dark) 20%, var(--c2-dark) 0, var(--c2-dark) 40%, var(--c3-dark) 0, var(--c3-dark) 60%, var(--c4-dark) 0, var(--c4-dark) 80%, var(--c5-dark) 0);
+}
+
+.output .table-5:nth-last-child(3) {
+  border-radius: 0px 0px 7px 7px;
+}
+
+.output .table-5:nth-child(3) {
+  margin: 10px auto 1px;
+  border-radius: 7px 7px 0px 0px;
+}
+
+.output .table-5:nth-child(3)::after {
   background: -webkit-gradient(linear, left top, right top, color-stop(20%, var(--c1-dark)), color-stop(0, var(--c2-dark)), color-stop(40%, var(--c2-dark)), color-stop(0, var(--c3-dark)), color-stop(60%, var(--c3-dark)), color-stop(0, var(--c4-dark)), color-stop(80%, var(--c4-dark)), color-stop(0, var(--c5-dark)));
   background: linear-gradient(90deg, var(--c1-dark) 20%, var(--c2-dark) 0, var(--c2-dark) 40%, var(--c3-dark) 0, var(--c3-dark) 60%, var(--c4-dark) 0, var(--c4-dark) 80%, var(--c5-dark) 0);
 }
@@ -388,7 +402,7 @@ footer > p {
   color: #fff;
 }
 
-.sales {
+.sales, .output {
   width: 95%;
   min-width: 150px;
   max-width: 800px;
@@ -485,7 +499,7 @@ footer > p {
   background: #24A335;
 }
 
-.sales .button {
+.sales .button, .output .button {
   margin-top: 10px;
 }
 
@@ -527,8 +541,7 @@ footer > p {
     display: none;
   }
   .table-5,
-  .table-3,
-  .sales .table-5 {
+  .table-3, .sales .table-5, .output .table-5 {
     font-size: 0.7em;
     margin-left: auto;
   }

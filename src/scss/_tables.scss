@@ -106,3 +106,20 @@
         border-radius: 7px 7px 0px 0px;
     }
 }
+
+.output {
+    @extend .sales;
+    & .table-5 {
+        &:nth-last-child(3) {
+            border-radius: 0px 0px 7px 7px;
+        }
+        &:nth-child(3) {
+            &::after {
+                @extend %table:nth-child(2)::after;
+                background: linear-gradient(90deg, get-stops(var(--c1-dark) var(--c2-dark) var(--c3-dark) var(--c4-dark) var(--c5-dark)));
+            }
+            margin: 10px auto 1px;
+            border-radius: 7px 7px 0px 0px;
+        }
+    }
+}

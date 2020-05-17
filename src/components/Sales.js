@@ -7,7 +7,20 @@ const api = process.env.REACT_APP_API_URL;
 const apiProduct = api + '/products/apiproductos.php';
 const apiSales = api + '/sales/apiventas.php';
 
+const headers = {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+}
+
 const products = [];
+
+const today = new Date();
+const day = today.getDate();
+const day2 = today.getDate() + 1;
+const month = today.getMonth() + 1;
+const year = today.getFullYear();
+const string1 = year + "-" + month + "-" + day;
+const string2 = year + "-" + month + "-" + day2;
 
 export default class Sales extends Component {
     state = {
@@ -20,7 +33,15 @@ export default class Sales extends Component {
     }
 
     async componentDidMount () {
-        const res = await axios.get(apiSales);
+        const dateStart = new Date(string1).getTime();
+        const dateEnd = new Date(string2).getTime();
+        const dates = {
+            dateStart: Math.floor(dateStart / 1000),
+            dateEnd: Math.floor(dateEnd / 1000)
+        }
+        const res = await axios.post(apiSales, dates, {
+            headers: headers
+        });
         this.setState({
             profits: res.data.profits
         })

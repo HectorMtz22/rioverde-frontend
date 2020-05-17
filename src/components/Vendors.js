@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const api = process.env.REACT_APP_API_URL;
 const apiVendors = api + '/vendors/apiproveedores.php';
+const apiProducts = api + '/products/apiproductos.php';
 
 const headers = {
     'Content-Type': 'application/json',
@@ -34,15 +35,21 @@ export default class Vendors extends Component {
         }
     }
 
-    deleteVendor = async (id) => {
-        const check = window.confirm('Quieres eliminar el Vendedor');
+    deleteVendor = async (id, name) => {
+        const check = window.confirm('Quieres eliminar el Vendedor (Se eliminarán los productos registrados a nombre de este proveedor)');
         if (check) {
             const delVen = {
                 "method" : "DELETE",
                 "_id" : id
             } 
+            const delProducto = {
+                "deleteMarca" : name
+            }
             //await axios.delete(apiVendors + "/" + delVen);
             await axios.post(apiVendors, delVen, {
+                headers: headers
+            });
+            await axios.post(apiProducts, delProducto, {
                 headers: headers
             });
             this.getVendors();
@@ -70,7 +77,7 @@ export default class Vendors extends Component {
                                 </Link>
                             </main>
                             <main className="conticon-right">
-                                <img src="/img/check.png" alt="Check" className="icon check" onClick={() => this.deleteVendor(vendor._id)}/>
+                                <img src="/img/check.png" alt="Check" className="icon check" onClick={() => this.deleteVendor(vendor._id, vendor.name)}/>
                             </main>
                         </main>
                     ))

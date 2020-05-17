@@ -18,6 +18,7 @@ export default class CreateProduct extends Component {
         name: '',
         brand: [],
         table: [],
+        products: [],
         buy: '',
         price: '',
         total: '',
@@ -25,7 +26,8 @@ export default class CreateProduct extends Component {
     }
 
     async componentDidMount() {
-        this.getVendors();
+        await this.getVendors();
+        await this.getProducts();
         if(this.props.match.params) {
             const envio = {
                 "method" : "GET",
@@ -67,6 +69,18 @@ export default class CreateProduct extends Component {
         }
     }
 
+    async getProducts() {
+        const res = await axios.get(apiProduct, {
+            headers: headers
+        });
+        if(res.data.items) {
+            this.setState({products: res.data.items});
+        }
+        if(res.data.mensaje) {
+            alert(res.data.mensaje);
+        }
+    }
+
     onInputChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -75,6 +89,13 @@ export default class CreateProduct extends Component {
 
     onSubmit = async (e) => {
         e.preventDefault();
+        const products = this.state.products;
+        for(let i = 0; i < products.length; i++) {
+            if(products[i]._id === this.state._id) {
+                alert("Código ya existente");
+                return 0;
+            }
+        }
         if (this.state.editing) {
             const updateProduct = {
                 method: "PUT",
