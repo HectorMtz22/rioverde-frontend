@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import User from './components/User'
+import User from './components/User';
+import ModifyUser from './components/ModifyUser';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Products from './components/Products';
@@ -12,6 +13,8 @@ import PageNotFound from './components/PageNotFound';
 import Stock from './components/Stock';
 import Output from './components/Output';
 import './css/style.css';
+import ChangePass from './components/ChangePass';
+import CreateUser from './components/CreateUser';
 
 class ProtectedRoute extends Component {
   render() {
@@ -38,7 +41,9 @@ function App() {
           <Switch>
           <Route path="/" exact component={User} />
           <Route path="/login" component={User} />
-          {/* <Route path="/register" component={User} /> */} {/* RegisterUser */}
+          <ProtectedRoute path="/addUser" component={CreateUser} />
+          <ProtectedRoute path="/changePass" component={ChangePass} />
+          <ProtectedRoute path="/modifyUser" component={ModifyUser} />
           <ProtectedRoute path='/sales' component={Sales} />
           <ProtectedRoute path="/products" component={Products} />
           <ProtectedRoute path="/create/product" component={CreateProduct} />

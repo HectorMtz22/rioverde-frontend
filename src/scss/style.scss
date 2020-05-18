@@ -200,6 +200,13 @@ footer > p {
     bottom: 25px;
 }
 
+.right {
+    float: right;
+    & img {
+        width: 20px;
+    }
+}
+
 @import "dates";
 
 @import "mobile";

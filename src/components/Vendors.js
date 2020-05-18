@@ -85,7 +85,7 @@ export default class Vendors extends Component {
                 <main className="nav">
                     <Link to="/create/vendor">
                         <button className="button strip1">
-                            <span>Agregar Vendedor</span>
+                            <span>Agregar Proveedor</span>
                         </button>
                     </Link>
                 </main>

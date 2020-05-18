@@ -4,6 +4,12 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import es from "date-fns/locale/es";
 
+import ReactExport from "react-export-excel";
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
+
 registerLocale("es", es);
 
 const api = process.env.REACT_APP_API_URL;
@@ -18,6 +24,7 @@ const headers = {
 }
 
 let table = [];
+//let values = {};
 
 const today = new Date();
 const day = today.getDate();
@@ -113,6 +120,7 @@ export default class Output extends Component {
                 }
             }
             this.setState({ table: table });
+            console.log(table);
         } else {
             this.setState({ table: [] });
         }
@@ -192,9 +200,16 @@ export default class Output extends Component {
                         </main>
                     ))
                 }
-                <button className="button strip1">
-                    Generar Excel
-                </button>
+                <ExcelFile element={<button className="button strip1">Generar Excel</button>}>
+                    <ExcelSheet data={table} name="Mes" >
+                        <ExcelColumn label="Fecha" value="idDate"/>
+                        <ExcelColumn label="Producto" value="idProduct"/>
+                        <ExcelColumn label="Nombre" value="name"/>
+                        <ExcelColumn label="Precio Unitario" value="price"/>
+                        <ExcelColumn label="Cantidad" value="cant"/>
+                        <ExcelColumn label="Total" value="total"/>
+                    </ExcelSheet>
+                </ExcelFile>
                 <main className="profits">
                     <span>La ganancia es: {this.state.profits}</span>
                 </main>

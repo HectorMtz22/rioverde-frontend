@@ -511,6 +511,14 @@ footer > p {
   bottom: 25px;
 }
 
+.right {
+  float: right;
+}
+
+.right img {
+  width: 20px;
+}
+
 .dates {
   width: 100%;
   display: -webkit-box;

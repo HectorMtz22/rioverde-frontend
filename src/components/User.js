@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 const api = process.env.REACT_APP_API_URL;
 const apiLoginUser = api + '/users/login.php';
@@ -71,11 +72,26 @@ export default class User extends Component {
             return (
                 <div>
                     <form action="" onSubmit={this.logout}>
+                        <main className="right">
+                                <Link to={"/modifyUser"}>
+                                    <img src="/img/edit-button.png" alt="Edit" className="icon"/>
+                                </Link>
+                            </main>
                         <h3>Credenciales</h3>
                         <p>Código: {this.state._id}</p> 
                         <p>Nombre: {this.state.name}</p>  
                         <p>Email: {this.state.email}</p> 
                         <p>Telefono: {this.state.tel}</p>
+                        <Link to={"/addUser"}>
+                            <button className="strip1">
+                                Añadir Usuario
+                            </button>
+                        </Link>
+                        <Link to={"/changePass"}>
+                            <button className="strip1">
+                                Cambiar Contraseña
+                            </button>
+                        </Link>
                         <button type="submit" className="strip1">
                             Cerrar sesión
                         </button>

@@ -66,10 +66,11 @@ export default class CreateVendor extends Component {
         e.preventDefault();
         const vendors = this.state.vendors;
         for(let i = 0; i < vendors.length; i++) {
+            if(!this.props.match.params.id) {
             if(vendors[i]._id === this.state._id) {
                 alert("Código ya existente");
                 return 0;
-            }
+            }}
         }
         if (this.state.editing) {
             const updateVendor = {

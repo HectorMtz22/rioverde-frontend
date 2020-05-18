@@ -91,10 +91,11 @@ export default class CreateProduct extends Component {
         e.preventDefault();
         const products = this.state.products;
         for(let i = 0; i < products.length; i++) {
+            if(!this.props.match.params.id) {
             if(products[i]._id === this.state._id) {
                 alert("Código ya existente");
                 return 0;
-            }
+            }}
         }
         if (this.state.editing) {
             const updateProduct = {
@@ -158,7 +159,7 @@ export default class CreateProduct extends Component {
                             }
                         </select>
                         <label htmlFor="title" className="label-name:valid">
-                            <span className="content-name:valid">Materia</span>
+                            <span className="content-name:valid">Proveedor</span>
                         </label>
                     </main>
                     <main>
